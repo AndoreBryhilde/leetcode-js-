@@ -30,15 +30,19 @@ Constraints:
 0 <= right - left <= 104
 
 /**
- * @param {string[]} strs
+ * @param {number} left
+ * @param {number} right
  * @return {number}
  */
-var minDeletionSize = function(strs) {
-    let ans=0;
-    for(let i=0;i<strs[0].length;i++){
-        for(let j=0;j<strs.length-1;j++){
-            if(strs[j][i]>strs[j+1][i]){ans++;break;}
+var countPrimeSetBits = function(left, right) {
+    let ans=0;let prime=[2,3,5,7,11,13,17,19,23,31];
+    for(let i=left;i<=right;i++){
+        let c=0;let x=i;
+        while(x){
+            c+=x%2;
+            x>>=1;
         }
+        if(prime.includes(c))ans++;
     }
     return ans;
 };
