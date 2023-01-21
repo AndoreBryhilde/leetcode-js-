@@ -39,3 +39,21 @@ var validMountainArray = function(arr) {
     }
     return true;
 };
+
+//berrer way
+var validMountainArray = function(arr) {
+  if (arr.length <= 2) return false;
+  let climbing = true;
+  for(let i = 0; i <= arr.length - 1; i += 1) {
+    if (arr[i + 1] == arr[i]) return false;
+    if (climbing) {
+      if (arr[i + 1] < arr[i]) {
+        if (i === 0) return false;
+        climbing = false;
+      }
+    } else {
+      if (arr[i + 1] > arr[i]) return false;
+    }
+  }
+  return !climbing;
+};
