@@ -40,3 +40,32 @@ var minDiffInBST = function(root) {
     track(root);
     return ans;
 };
+//go lang
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func minDiffInBST(root *TreeNode) int {
+    var ans=10001;
+    var temp=-1;
+    track :=func(node *TreeNode){}
+    track =func(n *TreeNode){
+        if n == nil {
+            return;
+        }
+        track(n.Left);
+        if temp != -1 {
+            if (n.Val-temp)<ans {
+                ans=n.Val-temp;
+            }
+        }
+        temp=n.Val;
+        track(n.Right);
+    }
+    track(root);
+    return ans;
+}
