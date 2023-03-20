@@ -29,3 +29,13 @@ var canPlaceFlowers = function(flowerbed, n) {
     }
     return !n;
 };
+//faster by less check
+var canPlaceFlowers = function(flowerbed, n) {
+    for (let =0;i<flowerbed.length;i++){
+        if(flowerbed[i-1]!==1&&flowerbed[i+1]!==1&&flowerbed[i]===0){
+            n--;
+            flowerbed[i]=1;
+        }
+    }
+    return n <= 0;
+};
